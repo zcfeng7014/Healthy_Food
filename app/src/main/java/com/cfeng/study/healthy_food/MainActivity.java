@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,10 +22,9 @@ import android.widget.Toast;
 import com.acker.simplezxing.activity.CaptureActivity;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.cfeng.study.healthy_food.bean.CMDBean;
 import com.cfeng.study.healthy_food.bean.FoodBean;
 import com.cfeng.study.healthy_food.config.WebConfig;
 import com.google.gson.Gson;
@@ -34,8 +32,6 @@ import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 import com.lzx.autoverticallibrary.bean.AutoVerticalViewDataData;
 import com.lzx.autoverticallibrary.utils.AutoVerticalViewView;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,8 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         jumpToproduct();
                         break;
                     case 4:
-                        get_product_info("0");
-                      //  JumpToQR();
+                        JumpToQR();
                         break;
                     case 5:
                         JumpToCm();
@@ -200,7 +195,16 @@ public class MainActivity extends AppCompatActivity {
                 switch (resultCode) {
                     case RESULT_OK:
                         String str=data.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT);
-                        get_product_info(str);
+                        Gson gson=new Gson();
+                        CMDBean bean=gson.fromJson(str,CMDBean.class);
+                        switch (bean.getType()){
+                            case "product":
+                                get_product_info(bean.getValue()+"");
+                                break;
+                            case "good":break;
+                            case "wuliu":break;
+                        }
+
                         break;
                     case RESULT_CANCELED:
                         if (data != null) {
@@ -222,13 +226,18 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println(resonse);
                         Gson gson = new Gson();
                         FoodBean bean = gson.fromJson(resonse, FoodBean.class);
-                        Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+                        if(bean==null){
+                            Toast.makeText(getApplicationContext(),"信息获取失败",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Intent intent = new Intent(getApplicationContext(), ProductInfoActivity.class);
                         intent.putExtra("bean", bean);
                         startActivity(intent);
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),"信息获取出错",Toast.LENGTH_SHORT).show();
                     }
                 }));
 

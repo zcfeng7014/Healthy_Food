@@ -13,7 +13,7 @@ import com.cfeng.study.healthy_food.bean.FoodBean;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class InfoActivity extends AppCompatActivity {
+public class ProductInfoActivity extends AppCompatActivity {
 
     @BindView(R.id.pname)
     TextView pname;
@@ -35,6 +35,8 @@ public class InfoActivity extends AppCompatActivity {
     ImageView logo;
     @BindView(R.id.size)
     TextView size;
+    @BindView(R.id.companyintro)
+    TextView companyintro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class InfoActivity extends AppCompatActivity {
         Glide.with(this).load(bean.getProduct_pic()).centerCrop().into(logo);
         size.setText(bean.getProduct_size());
         company_code.setText(bean.getCompany_code());
+        companyintro.setText(bean.getCompany_intro());
     }
 
     @Override

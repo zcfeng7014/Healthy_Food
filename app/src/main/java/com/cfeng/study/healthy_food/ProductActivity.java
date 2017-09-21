@@ -21,6 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.cfeng.study.healthy_food.bean.FoodBean;
 import com.cfeng.study.healthy_food.bean.NewBean;
 import com.cfeng.study.healthy_food.bean.ProductBean;
 import com.cfeng.study.healthy_food.config.WebConfig;
@@ -83,10 +85,35 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
         listView.setRefreshing(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                get_product_info(""+mlist.get(i-1).getProduct_id());
+            }
+        });
         listView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
 
     }
+    private void get_product_info(String str) {
 
+
+        ((App)getApplication()).requestQueue.add(new StringRequest(WebConfig.get_product_info+str, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String resonse) {
+                System.out.println(resonse);
+                Gson gson = new Gson();
+                FoodBean bean = gson.fromJson(resonse, FoodBean.class);
+                Intent intent = new Intent(getApplicationContext(), ProductInfoActivity.class);
+                intent.putExtra("bean", bean);
+                startActivity(intent);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }));
+
+    }
     @Override
     public boolean onSupportNavigateUp() {
         finish();

@@ -64,6 +64,20 @@
                         android:orientation="horizontal">
                         <TextView
                             style="@style/info_text_title"
+                            android:text="产品编号："/>
+                        <TextView
+                            style="@style/info_text_value"
+                            android:id="@+id/pid"
+                            />
+                    </LinearLayout>
+                    <View
+                        style="@style/cut"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            style="@style/info_text_title"
                             android:text="建议售价："/>
                         <TextView
                             style="@style/info_text_value"
@@ -105,12 +119,12 @@
                         android:orientation="horizontal">
                         <TextView
                             style="@style/info_text_title"
-                            android:text="产品编号："/>
+                            android:text="产品介绍："/>
                         <TextView
                             style="@style/info_text_value"
-                            android:id="@+id/pid"
-                            />
+                            android:id="@+id/pintro" />
                     </LinearLayout>
+
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
@@ -155,7 +169,7 @@
                         android:orientation="horizontal">
                         <TextView
                             style="@style/info_text_title"
-                            android:text="基地工商号："/>
+                            android:text="管理号："/>
                         <TextView
                             style="@style/btn"
                             android:textSize="23sp"
@@ -173,13 +187,11 @@
                         android:orientation="horizontal">
                         <TextView
                             style="@style/info_text_title"
-                            android:text="产品介绍："/>
+                            android:text="基地介绍："/>
                         <TextView
                             style="@style/info_text_value"
-                            android:id="@+id/pintro" />
+                            android:id="@+id/companyintro" />
                     </LinearLayout>
-                    <View
-                        style="@style/cut"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
