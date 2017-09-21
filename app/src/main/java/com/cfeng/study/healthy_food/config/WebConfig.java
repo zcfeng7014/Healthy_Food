@@ -10,4 +10,7 @@ public interface WebConfig {
     String shownew =site_url+"show_news.html?id=";
     String get_product_info=site_url+"get_product_info.html?id=";
     String get_product_list=site_url+"get_product_list.html";
+    String get_type_list=site_url+"get_type_list.html";
+    String get_food_list_by_type=site_url+"get_food_list_by_type.html?type=";
+    String get_food_info_by_name=site_url+"get_food_info_by_name.html?name=";
 }

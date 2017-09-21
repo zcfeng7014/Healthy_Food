@@ -68,10 +68,8 @@ public class MainActivity extends AppCompatActivity {
             "物流查询",
             "产品列表",
             "扫一扫",
-            "联系我们",
+            "意见箱",
     };
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

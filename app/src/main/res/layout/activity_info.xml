@@ -7,7 +7,7 @@
     android:background="@drawable/info_bg"
 
     android:orientation="vertical"
-    tools:context="com.cfeng.study.healthy_food.InfoActivity">
+    tools:context="com.cfeng.study.healthy_food.ProductInfoActivity">
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
