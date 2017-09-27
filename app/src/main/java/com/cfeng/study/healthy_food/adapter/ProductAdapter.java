@@ -1,4 +1,4 @@
-package com.cfeng.study.healthy_food;
+package com.cfeng.study.healthy_food.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cfeng.study.healthy_food.R;
 import com.cfeng.study.healthy_food.bean.NewBean;
 import com.cfeng.study.healthy_food.bean.ProductBean;
 import com.jude.rollviewpager.RollPagerView;

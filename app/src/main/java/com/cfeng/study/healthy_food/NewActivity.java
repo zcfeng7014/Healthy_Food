@@ -15,6 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.cfeng.study.healthy_food.adapter.NewAdapter;
+import com.cfeng.study.healthy_food.adapter.TestNormalAdapter;
 import com.cfeng.study.healthy_food.bean.NewBean;
 import com.cfeng.study.healthy_food.config.WebConfig;
 import com.google.gson.Gson;

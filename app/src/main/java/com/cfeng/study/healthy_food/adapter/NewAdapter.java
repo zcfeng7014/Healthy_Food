@@ -1,4 +1,4 @@
-package com.cfeng.study.healthy_food;
+package com.cfeng.study.healthy_food.adapter;
 
 import android.content.Context;
 import android.graphics.Color;

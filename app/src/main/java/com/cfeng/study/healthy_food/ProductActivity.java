@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.cfeng.study.healthy_food.adapter.ProductAdapter;
 import com.cfeng.study.healthy_food.bean.Product_info;
 import com.cfeng.study.healthy_food.bean.ProductBean;
 import com.cfeng.study.healthy_food.config.WebConfig;

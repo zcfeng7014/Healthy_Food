@@ -1,4 +1,4 @@
-package com.cfeng.study.healthy_food;
+package com.cfeng.study.healthy_food.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +10,9 @@ import com.jude.rollviewpager.adapter.StaticPagerAdapter;
  * Created by Administrator on 2017/8/15.
  */
 
-class TestNormalAdapter extends StaticPagerAdapter {
+public  class TestNormalAdapter extends StaticPagerAdapter {
     private int[] imgs ;
-        TestNormalAdapter(int[] img){
+      public   TestNormalAdapter(int[] img){
             this.imgs=img;
         }
 
