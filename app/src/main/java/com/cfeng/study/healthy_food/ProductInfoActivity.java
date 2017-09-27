@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cfeng.study.healthy_food.bean.FoodBean;
+import com.cfeng.study.healthy_food.bean.Product_info;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,7 +53,7 @@ public class ProductInfoActivity extends AppCompatActivity {
     }
 
     private void initdata(Intent intent) {
-        FoodBean bean = (FoodBean) intent.getSerializableExtra("bean");
+        Product_info bean = (Product_info) intent.getSerializableExtra("bean");
         pname.setText(bean.getProduct_name());
         pid.setText(bean.getProduct_id() + "");
         pclass.setText(bean.getKind_name());

@@ -83,7 +83,6 @@ public class FoodCheckActivity extends AppCompatActivity {
                 ((App)getApplication()).requestQueue.add(new JsonObjectRequest(WebConfig.get_food_info_by_name+ URLEncoder.encode(adapter2.getItem(sp.getSelectedItemPosition())), null,new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        System.out.println("--------------"+response.toString()+"--------------------");
                         try {
                             table.setText(response.getString("check_warning"));
                         } catch (JSONException e) {

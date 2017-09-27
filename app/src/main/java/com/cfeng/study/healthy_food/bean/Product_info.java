@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Administrator on 2017/8/14.
  */
 
-public class FoodBean implements Serializable {
+public class Product_info implements Serializable {
 
     /**
      * product_id : 0

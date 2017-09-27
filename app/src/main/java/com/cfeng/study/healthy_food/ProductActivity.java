@@ -1,19 +1,13 @@
 package com.cfeng.study.healthy_food;
 
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,8 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.cfeng.study.healthy_food.bean.FoodBean;
-import com.cfeng.study.healthy_food.bean.NewBean;
+import com.cfeng.study.healthy_food.bean.Product_info;
 import com.cfeng.study.healthy_food.bean.ProductBean;
 import com.cfeng.study.healthy_food.config.WebConfig;
 import com.google.gson.Gson;
@@ -102,7 +95,7 @@ public class ProductActivity extends AppCompatActivity {
             public void onResponse(String resonse) {
                 System.out.println(resonse);
                 Gson gson = new Gson();
-                FoodBean bean = gson.fromJson(resonse, FoodBean.class);
+                Product_info bean = gson.fromJson(resonse, Product_info.class);
                 Intent intent = new Intent(getApplicationContext(), ProductInfoActivity.class);
                 intent.putExtra("bean", bean);
                 startActivity(intent);

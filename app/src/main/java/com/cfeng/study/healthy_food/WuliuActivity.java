@@ -17,8 +17,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acker.simplezxing.activity.CaptureActivity;
-import com.cfeng.study.healthy_food.bean.FoodBean;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.cfeng.study.healthy_food.bean.Express;
+import com.cfeng.study.healthy_food.bean.GoodBean;
+import com.cfeng.study.healthy_food.bean.Product_info;
+import com.cfeng.study.healthy_food.config.WebConfig;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,7 +68,26 @@ public class WuliuActivity extends AppCompatActivity {
                     return true;
                 }
                 if (motionEvent.getX() >= key.getWidth() - -key.getPaddingRight() - drawableright.getIntrinsicWidth()) {
-                    table.setText("aaa");
+                    ((App)getApplication()).requestQueue.add(new JsonArrayRequest(WebConfig.get_express_info+key.getText(), new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            table.setText("");
+                            for(int i=0;i<response.length();i++) {
+                                Gson gson = new Gson();
+                                try {
+                                    Express bean = gson.fromJson(response.get(i).toString(), Express.class);
+                                    table.append("\t"+bean.getTime()+"   "+bean.getCheck_info()+"\n");
+                                    table.append("\t"+bean.getEvent()+"\n");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                        }
+                    }));
                     return true;
                 }
                 return false;
@@ -115,9 +145,8 @@ public class WuliuActivity extends AppCompatActivity {
                 switch (resultCode) {
                     case RESULT_OK:
                         Gson gson = new Gson();
-
-                        FoodBean bean = gson.fromJson(data.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT), FoodBean.class);
-                       // key.setText(bean.getWl_id());
+                        GoodBean bean = gson.fromJson(data.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT), GoodBean.class);
+                        key.setText(bean.getWuliu_id());
                         break;
                     case RESULT_CANCELED:
                         if (data != null) {

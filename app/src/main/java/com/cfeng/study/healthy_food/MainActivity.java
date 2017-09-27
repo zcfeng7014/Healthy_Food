@@ -25,7 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.cfeng.study.healthy_food.bean.CMDBean;
-import com.cfeng.study.healthy_food.bean.FoodBean;
+import com.cfeng.study.healthy_food.bean.Product_info;
 import com.cfeng.study.healthy_food.config.WebConfig;
 import com.google.gson.Gson;
 import com.jude.rollviewpager.RollPagerView;
@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String resonse) {
                         System.out.println(resonse);
                         Gson gson = new Gson();
-                        FoodBean bean = gson.fromJson(resonse, FoodBean.class);
+                        Product_info bean = gson.fromJson(resonse, Product_info.class);
                         if(bean==null){
                             Toast.makeText(getApplicationContext(),"信息获取失败",Toast.LENGTH_SHORT).show();
                             return;
